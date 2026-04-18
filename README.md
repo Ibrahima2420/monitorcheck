@@ -56,18 +56,24 @@ kubectl get secret --namespace monitoring monitoring-grafana \
 ### 2. Custom Dashboards Creation
 * Cluster Health Dashboard
 * This dashboard provides an overview of the overall state of the Kubernetes cluster.
+---
+
 | Metric | Description |
 | :--- | :--- |
 | **CPU Usage** | `Total CPU consumption across the cluster` |
 | **Memory Usage** | `Total memory usage across all containers` |
 | **Running Pods** | `Number of active pods in Running state` |
 
+---
 * Storage Monitoring
 * This panel tracks disk utilization across nodes.
+---
+
 | Metric | Description |
 | :--- | :--- |
 | **Disk Usage** | `Percentage of used storage capacity` |
 
+---
 ### 3. Visualization Choices
 
 Different panel types were selected based on the nature of the data:
