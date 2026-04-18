@@ -84,3 +84,41 @@ Used for CPU and memory metrics to show trends over time.
 Used for displaying real-time values such as running pods.
 * Gauge
 Used for storage utilization to represent percentage-based capacity.
+## Configure PromQL Queries for Analysis
+
+### 1.Key Performance Indicators (KPIs)
+* 1.*CPU Usage
+```bash 
+sum(rate(container_cpu_usage_seconds_total[5m]))
+```
+* 2.Memory Usage
+```bash 
+sum(container_memory_usage_bytes)
+```
+* 3.Running Pods
+```bash
+count(kube_pod_status_phase{phase="Running"})
+```
+
+### 2.PromQL Optimization Techniques
+* rate() :Used for counter metrics (CPU, requests)
+```bash
+rate(container_cpu_usage_seconds_total[5m])
+```
+* avg_over_time(): Smooths fluctuations:
+```bash
+avg_over_time(container_memory_usage_bytes[10m])
+```
+### 3.SQL vs PromQL Comparison
+## SQL vs PromQL Comparison
+---
+
+| Concept | PromQL | SQL Equivalent |
+| :--- | :--- | :--- |
+| Filtering | `{pod="x"}` | WHERE pod='x' |
+| Aggregation | `sum()` | SUM() |
+| Grouping | `by (pod)` | GROUP BY pod |
+| Time Window | `[5m]` | INTERVAL 5 MIN |
+| Rate Calculation | `rate()` | Window functions |
+
+---
